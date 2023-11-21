@@ -1,0 +1,16 @@
+mutation UpdateTask($input: UpdateTaskInput!) {
+	updateTask(input: $input) {
+		id
+		name
+		tags
+		status
+		dueDate
+		position
+		pointEstimate
+		assignee {
+			id
+			avatar
+			fullName
+		}
+	}
+}
