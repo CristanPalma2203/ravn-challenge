@@ -524,6 +524,11 @@ export const GetTasksDocument = gql`
 			dueDate
 			position
 			pointEstimate
+			creator {
+				id
+				avatar
+				fullName
+			}
 			assignee {
 				id
 				avatar

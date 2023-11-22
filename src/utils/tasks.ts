@@ -9,7 +9,6 @@ export interface TaskData {
 	IN_PROGRESS: TaskItem[];
 	DONE: TaskItem[];
 	CANCELLED: TaskItem[];
-	[key: string]: TaskItem[];
 }
 
 export function formatTasks(tasks: GetTasksQuery["tasks"]): TaskData {
@@ -28,8 +27,10 @@ export function formatTasks(tasks: GetTasksQuery["tasks"]): TaskData {
 		newTaskList[status] = newTaskColumn;
 	});
 
-	Object.keys(newTaskList).forEach((key) => {
-		newTaskList[key].sort((a, b) => a.position - b.position);
+	(Object.keys(newTaskList) as Array<keyof typeof newTaskList>).forEach((key) => {
+		newTaskList[key].sort((a, b) => {
+			return a.position > b.position ? 1 : -1;
+		});
 	});
 
 	return newTaskList;

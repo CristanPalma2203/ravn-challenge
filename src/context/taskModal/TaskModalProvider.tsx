@@ -1,5 +1,10 @@
-import { ReactNode, useReducer, createContext, useContext } from "react";
+import { ReactNode, useReducer } from "react";
 import { TaskItem } from "../../utils/tasks";
+import { TaskModalContext } from "./TaskModalContext";
+
+interface Props {
+	children: ReactNode;
+}
 
 interface State {
 	task: TaskItem | null;
@@ -58,19 +63,7 @@ function reducer(state: State, action: Action): State {
 	}
 }
 
-const TaskModalContext = createContext<State | undefined>(undefined);
-
-const useTaskModal = () => {
-	const context = useContext(TaskModalContext);
-
-	if (!context) {
-		throw new Error("useTaskModal must be used within a TaskModalProvider");
-	}
-
-	return context;
-};
-
-function TaskModalProvider(props: { children: ReactNode }) {
+function TaskModalProvider(props: Props) {
 	const { children } = props;
 
 	const [state, dispatch] = useReducer(reducer, initialState);
@@ -110,4 +103,4 @@ function TaskModalProvider(props: { children: ReactNode }) {
 	return <TaskModalContext.Provider value={value}>{children}</TaskModalContext.Provider>;
 }
 
-export { useTaskModal, TaskModalProvider };
+export { TaskModalProvider };

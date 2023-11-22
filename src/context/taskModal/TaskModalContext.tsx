@@ -15,14 +15,15 @@ interface TaskModalContextValue {
 
 const TaskModalContext = createContext<TaskModalContextValue | null>(null);
 
-const useTaskModal = () => {
+function useTaskModal() {
 	const context = useContext(TaskModalContext);
 
-	if (!context) {
+	if (context === null) {
 		throw new Error("useTaskModal must be used within a TaskModalProvider");
+	} else {
 	}
 
 	return context;
-};
+}
 
 export { useTaskModal, TaskModalContext };

@@ -15,11 +15,11 @@ function App() {
 				<Navigation />
 				<ToastContainer
 					theme="dark"
-					newestOnTop
+					newestOnTop={false}
 					closeOnClick
-					pauseOnFocusLoss
 					pauseOnHover
-					position={toast.POSITION.BOTTOM_RIGHT}
+					draggable
+					position={toast.POSITION.TOP_RIGHT}
 				/>
 			</ThemeProvider>
 		</ApolloProvider>

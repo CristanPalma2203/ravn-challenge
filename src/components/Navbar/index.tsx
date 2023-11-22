@@ -1,14 +1,8 @@
-import {
-	RiMenuLine as ListIcon,
-	RiFunctionLine as GridIcon,
-	RiAddLine as AddIcon,
-} from "react-icons/ri";
-import { useTaskModal } from "../../context/taskModal/TaskModalContext";
-import { Container, IconButton, Indicator, SwitchButton, SwitchContainer } from "./styles";
+import { RiMenuLine as ListIcon, RiFunctionLine as GridIcon } from "react-icons/ri";
+
+import { Container, Indicator, SwitchButton, SwitchContainer } from "./styles";
 
 function Navbar() {
-	const { openCreateModal } = useTaskModal();
-
 	return (
 		<Container>
 			<SwitchContainer>
@@ -29,9 +23,6 @@ function Navbar() {
 					)}
 				</SwitchButton>
 			</SwitchContainer>
-			<IconButton onClick={openCreateModal}>
-				<AddIcon size={24} />
-			</IconButton>
 		</Container>
 	);
 }

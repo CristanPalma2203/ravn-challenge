@@ -6,6 +6,7 @@ import {
 	useGetTasksQuery,
 	useMoveTaskMutation,
 } from "../../graphql";
+import { Card } from "./Card";
 import { Container, TaskColumn, TaskList } from "./styles";
 import { Text } from "../../components/common/Text";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
@@ -16,6 +17,7 @@ function Dashboard() {
 			const data = cache.readQuery<GetTasksQuery>({
 				query: GetTasksDocument,
 			});
+			console.log(data);
 			const tasks = data?.tasks;
 			const newTask = result.data?.updateTask;
 			if (tasks && newTask) {
@@ -52,7 +54,9 @@ function Dashboard() {
 	const handleOnDragEnd = async (result: DropResult) => {
 		const { destination, draggableId } = result;
 		const task = data.tasks.find((task) => task.id === draggableId);
-		if (!task || !destination || !draggableId) return;
+		if (!task || !destination || !draggableId) {
+			return;
+		}
 
 		await moveTask({
 			variables: {
@@ -92,11 +96,12 @@ function Dashboard() {
 						<Text as="h1" size="lg" weight="bold" variant="body">
 							{status} ({taskData[status].length})
 						</Text>
-						<Droppable droppableId={status.toString()}>
+
+						<Droppable droppableId={status}>
 							{(provided) => (
 								<TaskList ref={provided.innerRef} {...provided.droppableProps}>
-									{taskData[status].map(() => (
-										<div></div>
+									{taskData[status].map((task, index) => (
+										<Card key={task.id} task={task} index={index} />
 									))}
 									{provided.placeholder}
 								</TaskList>

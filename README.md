@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
+# Ravn Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Technologies
 
-Currently, two official plugins are available:
+- TypeScript
+- Vite
+- React Hook Form
+- React Icons
+- React toastify
+- Prettier
+- Apollo Client
+- Framer Motion
+- React Beautiful DnD (A library for implementing drag-and-drop functionality in React applications.)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Project Structure 
+- The project adopts a well-organized folder structure based on the approach outlined in React Folder Structure: https://blog.webdevsimplified.com/2022-07/react-folder-structure/ to ensure maintainability and scalability.
 
-## Expanding the ESLint configuration
+# Setup Project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+$ npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+```bash
+$ npm run dev
+```
+
+# API and Token Configuration
+To connect to the GraphQL API, you'll need to update the API URL and token in the project configuration. Since the provided API had some issues, I created a local GraphQL server for development purposes.
+
+You can find the local GraphQL server repository here: https://github.com/CristanPalma2203/GraphQL
+
+# Screenshots 
+
+
